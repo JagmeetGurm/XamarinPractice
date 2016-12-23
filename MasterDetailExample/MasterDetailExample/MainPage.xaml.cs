@@ -12,7 +12,7 @@ namespace MasterDetailExample
 		{
 			InitializeComponent();
 			masterPage.ListView.ItemSelected += OnItemSelected;
-
+			this.BindingContext = new MainPageViewModel();
 
 		}
 		void OnItemSelected(object sender, SelectedItemChangedEventArgs e)

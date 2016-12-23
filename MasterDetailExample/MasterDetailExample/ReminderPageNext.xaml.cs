@@ -10,6 +10,7 @@ namespace MasterDetailExample
 		public ReminderPageNext()
 		{
 			InitializeComponent();
+			this.BindingContext = new ReminderPageNextViewModel();
 		}
 	}
 }

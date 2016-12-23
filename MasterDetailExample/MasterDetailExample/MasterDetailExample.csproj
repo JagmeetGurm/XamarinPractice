@@ -80,6 +80,9 @@
     </Compile>
     <Compile Include="AppNavigation.cs" />
     <Compile Include="MasterPageViewModel.cs" />
+    <Compile Include="MasterView.cs" />
+    <Compile Include="MainPageViewModel.cs" />
+    <Compile Include="ReminderPageNextViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

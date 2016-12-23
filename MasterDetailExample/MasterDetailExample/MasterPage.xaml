@@ -3,7 +3,8 @@
 		Title="Personal Organiser">
 	<ContentPage.Content>
 		<StackLayout VerticalOptions="FillAndExpand">
-			<ListView x:Name="listView" VerticalOptions="FillAndExpand" ItemsSource="{Binding MasterPageItems}" SeparatorVisibility="None">
+			<ListView x:Name="listView" VerticalOptions="FillAndExpand" ItemsSource="{Binding MasterPageItems}" 
+				SelectedItem="{Binding GotCalled, Mode=TwoWay}" SeparatorVisibility="None">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<TextCell Text="{Binding Title}"  />

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace MasterDetailExample
 {
@@ -15,7 +18,35 @@ namespace MasterDetailExample
 				PropertyChanged(this,
 					new PropertyChangedEventArgs(propertyName));
 		}
+		private string _gotCalled="";
+		public string GotCalled
+		{
+			get
+			{
+				return _gotCalled;
+			}
+			set
+			{Debug.WriteLine("here it is");
+				if (_gotCalled != value)
+				{
+					_gotCalled = value;
+					OnPropertyChanged("GotCalled");
 
+				}
+			}
+		}
+
+		public ICommand CheckCommand
+		{
+			get
+			{
+				return new Command(ChCommand);
+			}
+		}
+	    void ChCommand()
+		{
+			Debug.WriteLine("check it is");
+		}
 		public List<MasterPageItem> MasterPageItems
 		{
 			get { return _masterPageItems;}
@@ -55,6 +86,7 @@ namespace MasterDetailExample
 		public MasterPageViewModel()
 		{
 			GetList();
+			//GotCalled="yes";
 		}
 	}
 }
