@@ -7,31 +7,41 @@ using Xamarin.Forms;
 
 namespace MasterDetailExample
 {
-	public class MasterPageViewModel:INotifyPropertyChanged
+	public partial class MasterPageViewModel:MasterDetailPage,  INotifyPropertyChanged 
 	{
 		private List<MasterPageItem> _masterPageItems;
 
-		public event PropertyChangedEventHandler PropertyChanged;
-		protected void OnPropertyChanged(string propertyName)
+		public  event PropertyChangedEventHandler PropertyChanged;
+		protected override void  OnPropertyChanged(string propertyName)
 		{
 			if (PropertyChanged != null)
 				PropertyChanged(this,
 					new PropertyChangedEventArgs(propertyName));
 		}
-		private string _gotCalled="";
-		public string GotCalled
+		private MasterPageItem _gotCalled;
+		public MasterPageItem GotCalled
 		{
 			get
 			{
 				return _gotCalled;
 			}
 			set
-			{Debug.WriteLine("here it is");
+			{
 				if (_gotCalled != value)
 				{
 					_gotCalled = value;
-					OnPropertyChanged("GotCalled");
 
+					OnPropertyChanged("GotCalled");
+					if (_gotCalled == null)
+						return;
+					//Detail = new NavigationPage(new ToDoListPage());
+					//	Detail = new NavigationPage((Page)Activator.CreateInstance(_gotCalled.TargetType));
+					var t = new MasterView();
+				//	t.NavigationToPage(new ToDoListPage());
+				//	AppNavigation.nav =  Detail.Navigation;
+				//	_gotCalled = null;
+				//	IsPresented = false;
+					Debug.WriteLine(_gotCalled.Title);
 				}
 			}
 		}
